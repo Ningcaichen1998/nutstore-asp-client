@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="22dp">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="应用密码创建成功" android:textSize="16sp" android:textStyle="bold"
+        android:textColor="@color/text"/>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="请立即复制保存，此密码仅在创建时完整展示一次。"
+        android:textSize="12sp" android:textColor="@color/red"
+        android:layout_marginTop="8dp" android:layout_marginBottom="12dp"/>
+
+    <TextView android:id="@+id/txt_newpw"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@drawable/bg_password"
+        android:text="-" android:textSize="17sp" android:textStyle="bold"
+        android:textColor="#1F6B47" android:fontFamily="monospace"
+        android:gravity="center" android:padding="14dp"
+        android:letterSpacing="0.1"/>
+
+    <TextView android:id="@+id/txt_newmeta"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="" android:textSize="12sp" android:textColor="@color/muted"
+        android:layout_marginTop="10dp"/>
+
+    <Button android:id="@+id/btn_copy_newpw"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="复制密码" android:textSize="14sp" android:textColor="#FFFFFF"
+        android:background="@drawable/bg_btn_primary"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

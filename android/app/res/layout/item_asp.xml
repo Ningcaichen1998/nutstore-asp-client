@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card"
+    android:padding="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical">
+            <TextView android:id="@+id/txt_name"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="-" android:textSize="15sp" android:textStyle="bold"
+                android:textColor="@color/text" android:maxLines="1" android:ellipsize="end"/>
+            <TextView android:id="@+id/txt_date"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="-" android:textSize="12sp" android:textColor="@color/muted"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+        <TextView android:id="@+id/btn_delete"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="删除" android:textSize="12sp" android:textColor="@color/red"
+            android:background="@drawable/bg_btn_danger"
+            android:paddingLeft="14dp" android:paddingRight="14dp"
+            android:paddingTop="6dp" android:paddingBottom="6dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:layout_marginTop="12dp">
+        <TextView android:id="@+id/txt_password"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="••••••••••••" android:textSize="14sp" android:textColor="@color/muted"
+            android:fontFamily="monospace" android:maxLines="1" android:ellipsize="end"/>
+        <TextView android:id="@+id/btn_toggle"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="显示" android:textSize="11sp" android:textColor="@color/muted"
+            android:background="@drawable/bg_tag"
+            android:paddingLeft="10dp" android:paddingRight="10dp"
+            android:paddingTop="4dp" android:paddingBottom="4dp"
+            android:layout_marginLeft="8dp"/>
+        <TextView android:id="@+id/btn_copy"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="复制" android:textSize="11sp" android:textColor="@color/muted"
+            android:background="@drawable/bg_tag"
+            android:paddingLeft="10dp" android:paddingRight="10dp"
+            android:paddingTop="4dp" android:paddingBottom="4dp"
+            android:layout_marginLeft="6dp"/>
+    </LinearLayout>
+</LinearLayout>

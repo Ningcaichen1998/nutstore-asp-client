@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg">
+
+    <!-- 顶栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/primary"
+        android:gravity="center_vertical"
+        android:paddingLeft="18dp" android:paddingRight="18dp"
+        android:paddingTop="14dp" android:paddingBottom="14dp">
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="坚果云 · 第三方应用管理"
+            android:textColor="#FFFFFF" android:textSize="17sp" android:textStyle="bold"/>
+        <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="设置" android:textColor="#DDF0FF" android:textSize="13sp"
+            android:padding="6dp" android:visibility="gone"/>
+        <TextView
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="退出登录" android:textColor="#DDF0FF" android:textSize="13sp"
+            android:padding="6dp" android:visibility="gone"/>
+    </LinearLayout>
+
+    <!-- ========== 登录视图 ========== -->
+    <ScrollView
+        android:id="@+id/login_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="26dp"
+            android:gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="坚果云" android:textSize="27sp" android:textStyle="bold"
+                android:textColor="@color/text" android:layout_marginTop="26dp"/>
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="第三方应用密码管理客户端（非官方）"
+                android:textSize="13sp" android:textColor="@color/muted"
+                android:layout_marginTop="6dp" android:layout_marginBottom="26dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="20dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="服务器地址" android:textSize="12sp" android:textColor="@color/muted"/>
+                <EditText android:id="@+id/in_server"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
+                    android:padding="11dp" android:textSize="14sp"
+                    android:text="https://www.jianguoyun.com"
+                    android:inputType="textUri"
+                    android:layout_marginTop="6dp" android:layout_marginBottom="14dp"
+                    android:singleLine="true"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="账号（坚果云邮箱）" android:textSize="12sp" android:textColor="@color/muted"/>
+                <EditText android:id="@+id/in_account"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
+                    android:padding="11dp" android:textSize="14sp"
+                    android:hint="you@example.com"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginTop="6dp" android:layout_marginBottom="14dp"
+                    android:singleLine="true"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="密码" android:textSize="12sp" android:textColor="@color/muted"/>
+                <EditText android:id="@+id/in_password"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
+                    android:padding="11dp" android:textSize="14sp"
+                    android:hint="坚果云登录密码"
+                    android:inputType="textPassword"
+                    android:layout_marginTop="6dp" android:layout_marginBottom="18dp"
+                    android:singleLine="true"/>
+
+                <Button android:id="@+id/btn_login"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="登 录" android:textSize="15sp" android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_btn_primary"
+                    android:padding="12dp"/>
+
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="点击登录后将打开坚果云登录页，账号密码会自动填入，请手动完成滑块验证。登录成功后 App 会自动保存登录会话（Cookie），下次无需重复验证。"
+                    android:textSize="12sp" android:textColor="@color/muted"
+                    android:lineSpacingExtra="3dp"
+                    android:layout_marginTop="16dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ========== 主视图 ========== -->
+    <LinearLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- 内容区 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!-- ===== 「我的」页 ===== -->
+            <ScrollView
+                android:id="@+id/tab_mine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:scrollbars="none">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_card"
+                        android:padding="18dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="WebDAV 服务器地址" android:textSize="12sp" android:textColor="@color/muted"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/mine_dav"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="https://dav.jianguoyun.com/dav/"
+                                android:textSize="14sp" android:textStyle="bold" android:textColor="@color/text"
+                                android:layout_marginTop="4dp"/>
+                            <TextView android:id="@+id/mine_btn_copy_dav"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="复制" android:textSize="11sp" android:textColor="@color/muted"
+                                android:background="@drawable/bg_tag" android:paddingLeft="10dp" android:paddingRight="10dp"
+                                android:paddingTop="3dp" android:paddingBottom="3dp" android:layout_marginLeft="8dp"/>
+                        </LinearLayout>
+
+                        <View android:layout_width="match_parent" android:layout_height="1dp"
+                            android:background="@color/border" android:layout_marginTop="14dp" android:layout_marginBottom="14dp"/>
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="坚果云账号" android:textSize="12sp" android:textColor="@color/muted"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/mine_account"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="-" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/text"
+                                android:layout_marginTop="4dp"/>
+                            <TextView android:id="@+id/mine_btn_copy_account"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="复制" android:textSize="11sp" android:textColor="@color/muted"
+                                android:background="@drawable/bg_tag" android:paddingLeft="10dp" android:paddingRight="10dp"
+                                android:paddingTop="3dp" android:paddingBottom="3dp" android:layout_marginLeft="8dp"/>
+                        </LinearLayout>
+
+                        <View android:layout_width="match_parent" android:layout_height="1dp"
+                            android:background="@color/border" android:layout_marginTop="14dp" android:layout_marginBottom="14dp"/>
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="坚果云密码" android:textSize="12sp" android:textColor="@color/muted"/>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="horizontal" android:gravity="center_vertical">
+                            <TextView android:id="@+id/mine_password"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="-" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/text"
+                                android:fontFamily="monospace" android:layout_marginTop="4dp"/>
+                            <TextView android:id="@+id/mine_btn_copy_password"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="复制" android:textSize="11sp" android:textColor="@color/muted"
+                                android:background="@drawable/bg_tag" android:paddingLeft="10dp" android:paddingRight="10dp"
+                                android:paddingTop="3dp" android:paddingBottom="3dp" android:layout_marginLeft="8dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg_card"
+                        android:padding="18dp"
+                        android:layout_marginTop="12dp">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="已创建应用数量" android:textSize="12sp" android:textColor="@color/muted"/>
+                            <TextView android:id="@+id/mine_count"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="-" android:textSize="22sp" android:textStyle="bold"
+                                android:textColor="@color/primary" android:layout_marginTop="6dp"/>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1.2" android:orientation="vertical"
+                            android:gravity="end">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="最近一次创建" android:textSize="12sp" android:textColor="@color/muted"/>
+                            <TextView android:id="@+id/mine_recent_name"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="-" android:textSize="16sp" android:textStyle="bold"
+                                android:textColor="@color/text" android:layout_marginTop="6dp"
+                                android:maxLines="1" android:ellipsize="end"/>
+                            <TextView android:id="@+id/mine_recent_time"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="" android:textSize="12sp" android:textColor="@color/muted"
+                                android:layout_marginTop="3dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+            <!-- ===== 「管理」页 ===== -->
+            <LinearLayout
+                android:id="@+id/tab_manage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:layout_margin="12dp"
+                    android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="创建新的应用密码" android:textSize="14sp" android:textStyle="bold"
+                        android:textColor="@color/text" android:layout_marginBottom="10dp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <EditText android:id="@+id/in_appname"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edittext"
+                            android:padding="11dp" android:textSize="14sp"
+                            android:hint="应用名称，如 Obsidian、WPS…"
+                            android:maxLength="30"
+                            android:singleLine="true"/>
+                        <Button android:id="@+id/btn_create"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="生成密码" android:textSize="13sp" android:textColor="#FFFFFF"
+                            android:background="@drawable/bg_btn_primary"
+                            android:paddingLeft="18dp" android:paddingRight="18dp"
+                            android:layout_marginLeft="10dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="已创建的应用" android:textSize="14sp" android:textStyle="bold"
+                    android:textColor="@color/text"
+                    android:layout_marginLeft="16dp" android:layout_marginTop="2dp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent" android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <ListView android:id="@+id/list_asps"
+                        android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:divider="@null" android:dividerHeight="0dp"
+                        android:paddingLeft="12dp" android:paddingRight="12dp"
+                        android:paddingTop="8dp" android:paddingBottom="20dp"
+                        android:scrollbars="none"/>
+                    <TextView android:id="@+id/txt_empty"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="还没有创建任何应用密码" android:textSize="13sp" android:textColor="@color/muted"
+                        android:visibility="gone"/>
+                    <ProgressBar android:id="@+id/loading"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone"/>
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- ===== 液态玻璃底栏 ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_bottombar"
+            android:gravity="center_vertical"
+            android:padding="6dp"
+            android:layout_marginLeft="18dp" android:layout_marginRight="18dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="16dp">
+            <TextView android:id="@+id/tab_mine_btn"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="10dp" android:paddingBottom="10dp"
+                android:text="我的" android:textSize="15sp" android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:background="@drawable/bg_tab_selected"/>
+            <TextView android:id="@+id/tab_manage_btn"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="10dp" android:paddingBottom="10dp"
+                android:text="管理" android:textSize="15sp"
+                android:textColor="#5A6B7E"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+# 构建中间产物
+android/build/
+android/app/res/drawable/icon.png
+
+# 签名密钥（构建时自动生成，请勿提交）
+*.keystore
+*.jks
+
+# Python
+__pycache__/
+*.pyc
+
+# APK v4 签名副产品
+*.idsig
