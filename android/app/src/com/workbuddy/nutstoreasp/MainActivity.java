@@ -33,6 +33,12 @@ public class MainActivity extends Activity {
     private EditText inPassword;
     private Button btnLogin;
 
+    // 卡片（用于应用透明度）
+    private View loginCard;
+    private View mineCardInfo;
+    private View mineCardStats;
+    private View manageCardCreate;
+
     // 「我的」页
     private View tabMine;
     private View tabManage;
@@ -68,6 +74,11 @@ public class MainActivity extends Activity {
         inAccount = findViewById(R.id.in_account);
         inPassword = findViewById(R.id.in_password);
         btnLogin = findViewById(R.id.btn_login);
+
+        loginCard = findViewById(R.id.login_card);
+        mineCardInfo = findViewById(R.id.mine_card_info);
+        mineCardStats = findViewById(R.id.mine_card_stats);
+        manageCardCreate = findViewById(R.id.manage_card_create);
 
         tabMine = findViewById(R.id.tab_mine);
         tabManage = findViewById(R.id.tab_manage);
@@ -122,6 +133,7 @@ public class MainActivity extends Activity {
         btnLogout.setVisibility(View.GONE);
         inAccount.setText(Store.account(this));
         inPassword.setText("");
+        applyCardAlpha();
     }
 
     private void showMain() {
@@ -131,6 +143,7 @@ public class MainActivity extends Activity {
         btnLogout.setVisibility(View.VISIBLE);
         fillMineHeader();
         switchTab(true);
+        applyCardAlpha();
         loadAsps();
     }
 
@@ -138,6 +151,15 @@ public class MainActivity extends Activity {
         Store.clear(this);
         Toast.makeText(this, "已退出登录", Toast.LENGTH_SHORT).show();
         showLogin();
+    }
+
+    /** 应用自定义卡片透明度 */
+    private void applyCardAlpha() {
+        int alpha = Store.cardAlpha(this);
+        loginCard.setBackground(Ui.cardBg(this, alpha));
+        mineCardInfo.setBackground(Ui.cardBg(this, alpha));
+        mineCardStats.setBackground(Ui.cardBg(this, alpha));
+        manageCardCreate.setBackground(Ui.cardBg(this, alpha));
     }
 
     // ---------------- 底栏切换 ----------------
@@ -218,6 +240,18 @@ public class MainActivity extends Activity {
         box.addView(cbPlain);
         box.addView(cbClickCopy);
 
+        // 卡片透明度
+        TextView alphaLabel = new TextView(this);
+        alphaLabel.setText("卡片透明度");
+        alphaLabel.setTextSize(14);
+        alphaLabel.setTextColor(0xFF243342);
+        alphaLabel.setPadding(pad, dp(10), pad, dp(2));
+        box.addView(alphaLabel);
+        final android.widget.SeekBar seekAlpha = new android.widget.SeekBar(this);
+        seekAlpha.setMax(100);
+        seekAlpha.setProgress(alphaToProgress(Store.cardAlpha(this)));
+        box.addView(seekAlpha);
+
         // 分隔线
         View divider = new View(this);
         divider.setBackgroundColor(0xFFE3EAF3);
@@ -242,6 +276,8 @@ public class MainActivity extends Activity {
                 .setPositiveButton("确定", (d, w) -> {
                     Store.setShowPasswordPlain(this, cbPlain.isChecked());
                     Store.setClickToCopy(this, cbClickCopy.isChecked());
+                    Store.setCardAlpha(this, progressToAlpha(seekAlpha.getProgress()));
+                    applyCardAlpha();
                     adapter.notifyDataSetChanged();
                 })
                 .setNegativeButton("取消", null)
@@ -257,6 +293,14 @@ public class MainActivity extends Activity {
 
     private int dp(int v) {
         return (int) (v * getResources().getDisplayMetrics().density + 0.5f);
+    }
+
+    private int progressToAlpha(int p) {
+        return 255 - (int) (p * 1.6);
+    }
+
+    private int alphaToProgress(int a) {
+        return (int) ((255 - a) / 1.6 + 0.5);
     }
 
     // ---------------- 登录 ----------------

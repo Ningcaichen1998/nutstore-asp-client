@@ -59,6 +59,15 @@ public class Store {
         prefs(c).edit().putBoolean("click_to_copy", v).apply();
     }
 
+    /** 设置：卡片背景透明度（0-255，255 为完全不透明） */
+    public static int cardAlpha(Context c) {
+        return prefs(c).getInt("card_alpha", 255);
+    }
+
+    public static void setCardAlpha(Context c, int v) {
+        prefs(c).edit().putInt("card_alpha", v).apply();
+    }
+
     public static void clear(Context c) {
         prefs(c).edit().clear().apply();
     }

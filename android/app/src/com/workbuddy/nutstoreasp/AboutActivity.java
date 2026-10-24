@@ -21,6 +21,7 @@ public class AboutActivity extends Activity {
         } catch (Exception ignored) {
         }
         ((TextView) findViewById(R.id.about_version)).setText("版本 " + ver);
+        findViewById(R.id.about_card).setBackground(Ui.cardBg(this, Store.cardAlpha(this)));
 
         findViewById(R.id.about_back).setOnClickListener(v -> finish());
         findViewById(R.id.about_source).setOnClickListener(v ->

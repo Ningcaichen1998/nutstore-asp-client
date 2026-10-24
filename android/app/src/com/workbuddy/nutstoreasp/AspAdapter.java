@@ -57,6 +57,8 @@ public class AspAdapter extends BaseAdapter {
         if (v == null) {
             v = LayoutInflater.from(ctx).inflate(R.layout.item_asp, parent, false);
         }
+        // 应用自定义卡片透明度
+        v.setBackground(Ui.cardBg(ctx, Store.cardAlpha(ctx)));
         final Api.Asp asp = data.get(position);
 
         TextView txtName = v.findViewById(R.id.txt_name);
