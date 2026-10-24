@@ -66,7 +66,8 @@ PYEOF
 "$BT/zipalign.exe" -f 4 "$BUILD/apk/unsigned.apk" "$BUILD/apk/aligned.apk"
 
 echo "[7/7] 生成密钥并签名..."
-KS="$BUILD/release.keystore"
+# 密钥存放在 build 目录之外，跨版本复用，保证可直接覆盖安装更新
+KS="$ROOT/release.keystore"
 if [ ! -f "$KS" ]; then
     keytool -genkeypair -keystore "$KS" -alias nutstoreasp \
         -keyalg RSA -keysize 2048 -validity 10000 \

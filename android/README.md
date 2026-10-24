@@ -6,7 +6,7 @@
 
 - APK：通过 [GitHub Releases](https://github.com/Ningcaichen1998/nutstore-asp-client/releases) 下载（已签名，Android 7.0+，minSdk 24）
 - 包名：`com.workbuddy.nutstoreasp`
-- 当前版本：1.1
+- 当前版本：1.3
 
 ## 功能
 
@@ -33,8 +33,8 @@ cd android
 bash build.sh
 ```
 
-构建链：`aapt2` + `javac` + `d8` + `zipalign` + `apksigner`，无需 Gradle。签名密钥为构建时自动生成（`build/release.keystore`，口令 `nutstoreasp123`）。
+构建链：`aapt2` + `javac` + `d8` + `zipalign` + `apksigner`，无需 Gradle。签名密钥为首次构建时自动生成并保存在 `android/release.keystore`（口令 `nutstoreasp123`），**跨版本复用同一密钥**，因此可直接覆盖安装更新，无需卸载。
 
 ## 安装提示
 
-首次安装需在系统设置中允许「安装未知来源应用」。因使用自定义调试签名，如后续重装需先卸载旧版本。
+首次安装需在系统设置中允许「安装未知来源应用」。签名密钥已固定（`android/release.keystore`），后续版本可直接覆盖安装更新。
