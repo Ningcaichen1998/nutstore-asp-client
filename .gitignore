@@ -2,6 +2,9 @@
 android/build/
 android/app/res/drawable/icon.png
 
+# APK 产物（仅通过 GitHub Release 分发，不纳入源码）
+*.apk
+
 # 签名密钥（构建时自动生成，请勿提交）
 *.keystore
 *.jks

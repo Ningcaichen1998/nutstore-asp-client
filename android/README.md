@@ -4,8 +4,9 @@
 
 ## 成品
 
-- APK：`../坚果云应用管理.apk`（已签名，Android 7.0+，minSdk 24）
+- APK：通过 [GitHub Releases](https://github.com/Ningcaichen1998/nutstore-asp-client/releases) 下载（已签名，Android 7.0+，minSdk 24）
 - 包名：`com.workbuddy.nutstoreasp`
+- 当前版本：1.1
 
 ## 功能
 

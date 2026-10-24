@@ -2,7 +2,16 @@
 # 坚果云第三方应用管理客户端 - APK 手动构建脚本（aapt2 + javac + d8 + apksigner）
 set -e
 
+if [ -z "$LOCALAPPDATA" ]; then
+    LOCALAPPDATA="${APPDATA/Roaming/Local}"
+fi
 SDK="$LOCALAPPDATA/Android/Sdk"
+
+# 定位 JDK（javac / jar / keytool）
+if [ -z "$JAVA_HOME" ]; then
+    JAVA_HOME="/c/Program Files/Eclipse Adoptium/jdk-17.0.20.101-hotspot"
+fi
+export PATH="$JAVA_HOME/bin:$PATH"
 BT="$SDK/build-tools/34.0.0"
 PLATFORM="$SDK/platforms/android-35/android.jar"
 

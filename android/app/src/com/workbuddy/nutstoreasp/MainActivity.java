@@ -218,7 +218,25 @@ public class MainActivity extends Activity {
         box.addView(cbPlain);
         box.addView(cbClickCopy);
 
-        new AlertDialog.Builder(this)
+        // 分隔线
+        View divider = new View(this);
+        divider.setBackgroundColor(0xFFE3EAF3);
+        android.widget.LinearLayout.LayoutParams dlp =
+                new android.widget.LinearLayout.LayoutParams(
+                        android.widget.LinearLayout.LayoutParams.MATCH_PARENT, dp(1));
+        dlp.setMargins(0, dp(14), 0, dp(6));
+        divider.setLayoutParams(dlp);
+        box.addView(divider);
+
+        // 关于行
+        TextView aboutRow = new TextView(this);
+        aboutRow.setText("关于");
+        aboutRow.setTextSize(15);
+        aboutRow.setTextColor(0xFF243342);
+        aboutRow.setPadding(0, dp(10), 0, dp(4));
+        box.addView(aboutRow);
+
+        final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("设置")
                 .setView(box)
                 .setPositiveButton("确定", (d, w) -> {
@@ -227,7 +245,14 @@ public class MainActivity extends Activity {
                     adapter.notifyDataSetChanged();
                 })
                 .setNegativeButton("取消", null)
-                .show();
+                .create();
+
+        aboutRow.setOnClickListener(v -> {
+            dialog.dismiss();
+            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+        });
+
+        dialog.show();
     }
 
     private int dp(int v) {
